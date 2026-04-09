@@ -13,6 +13,8 @@ It also includes custom skills built for Linux performance analysis, network deb
 
 ## Included Skills
 
+Browse the full generated index here: [`skills/README.md`](./skills/README.md)
+
 ### From `samber/cc-skills-golang`
 
 `golang-performance` · `golang-concurrency` · `golang-grpc` · `golang-observability` · `golang-error-handling` · `golang-context` · `golang-safety` · `golang-troubleshooting` · `golang-benchmark`
