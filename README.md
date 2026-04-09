@@ -27,14 +27,15 @@ It also includes custom skills built for Linux performance analysis, network deb
 
 ## What A Skill Looks Like
 
-Each skill lives in its own folder:
+Each skill lives in its own folder under `skills/`:
 
 ```text
-skill-name/
-├── SKILL.md
-├── scripts/        # optional
-├── examples/       # optional
-└── resources/      # optional
+skills/
+└── skill-name/
+    ├── SKILL.md
+    ├── scripts/        # optional
+    ├── examples/       # optional
+    └── resources/      # optional
 ```
 
 `SKILL.md` is the important file. That is the instruction set the agent loads when the context matches or when you invoke the skill explicitly.
@@ -74,7 +75,7 @@ Recommended layout:
 git clone git@github.com:abhiabhi0/ai-agents-skills.git ~/ai-agents-skills
 ```
 
-Then link the shared skills into each tool's expected path.
+Then link `~/ai-agents-skills/skills` into each tool's expected path.
 
 ## Tool Setup
 
@@ -82,21 +83,21 @@ Then link the shared skills into each tool's expected path.
 
 ```bash
 mkdir -p ~/.gemini/antigravity
-ln -s ~/ai-agents-skills ~/.gemini/antigravity/skills
+ln -s ~/ai-agents-skills/skills ~/.gemini/antigravity/skills
 ```
 
 ### Claude Code
 
 ```bash
 mkdir -p ~/.claude
-ln -s ~/ai-agents-skills ~/.claude/skills
+ln -s ~/ai-agents-skills/skills ~/.claude/skills
 ```
 
 ### Cursor
 
 ```bash
 mkdir -p ~/.cursor
-ln -s ~/ai-agents-skills ~/.cursor/skills
+ln -s ~/ai-agents-skills/skills ~/.cursor/skills
 ```
 
 ### OpenAI Codex
@@ -107,21 +108,21 @@ Common pattern:
 
 ```bash
 mkdir -p ~/.codex
-ln -s ~/ai-agents-skills ~/.codex/skills
+ln -s ~/ai-agents-skills/skills ~/.codex/skills
 ```
 
 If your Codex environment uses a project-local skills folder, you can also link it there:
 
 ```bash
 mkdir -p .agent
-ln -s ~/ai-agents-skills .agent/skills
+ln -s ~/ai-agents-skills/skills .agent/skills
 ```
 
 ### Project-local setup for any agent
 
 ```bash
 mkdir -p /path/to/your-project/.agent
-ln -s ~/ai-agents-skills /path/to/your-project/.agent/skills
+ln -s ~/ai-agents-skills/skills /path/to/your-project/.agent/skills
 ```
 
 ## Windows Alternative
@@ -133,7 +134,7 @@ Windows does not use Unix symlinks as smoothly in every setup, but you still hav
 This is usually the easiest Windows equivalent for folders:
 
 ```powershell
-mklink /J $env:USERPROFILE\.cursor\skills $env:USERPROFILE\ai-agents-skills
+mklink /J $env:USERPROFILE\.cursor\skills $env:USERPROFILE\ai-agents-skills\skills
 ```
 
 You can use the same pattern for other tools by changing the destination path.
@@ -143,7 +144,7 @@ You can use the same pattern for other tools by changing the destination path.
 If Developer Mode is enabled or you have elevated permissions:
 
 ```powershell
-New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.claude\skills" -Target "$env:USERPROFILE\ai-agents-skills"
+New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.claude\skills" -Target "$env:USERPROFILE\ai-agents-skills\skills"
 ```
 
 ### Option 3: Copy instead of link
